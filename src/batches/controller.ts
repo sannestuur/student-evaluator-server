@@ -8,7 +8,7 @@ import {
   Body
 } from "routing-controllers";
 import Batch from "./entity";
-import Student from "../students/entity";
+// import Student from "../students/entity";
 
 // import {IsBoard, isValidTransition, calculateWinner, finished} from './logic'
 import { io } from "../index";

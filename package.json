@@ -1,5 +1,5 @@
 {
-  "name": "game-starter-b15-server",
+  "name": "student-evaluator",
   "version": "1.0.0",
   "main": "target/index.js",
   "private": true,
