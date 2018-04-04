@@ -21,7 +21,7 @@ export default class Evaluation extends BaseEntity {
   status: Score
 
   @IsString()
-  @Column("text")
+  @Column({ nullable: true })
   remarks: string
 
   @ManyToOne(_ => Student, student => student.evaluations)

@@ -26,7 +26,7 @@ export default class Student extends BaseEntity {
   @Column('text')
   photo: string
 
-  @OneToMany(_ => Evaluation, evaluation => evaluation.student)
+  @OneToMany(_ => Evaluation, evaluation => evaluation.student, {eager:true})
   evaluations: Evaluation[]
 
 }
