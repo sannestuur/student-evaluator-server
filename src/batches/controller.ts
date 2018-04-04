@@ -34,7 +34,7 @@ export default class BatchController {
   //   return Batch.findOneById(id);
   // }
 
-  @Authorized()
+  // @Authorized()
   @Post("/batches")
   @HttpCode(201)
   async createBatch(@Body() batch: Batch) {

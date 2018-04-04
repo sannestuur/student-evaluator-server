@@ -1,9 +1,7 @@
-import { BaseEntity, PrimaryGeneratedColumn, Column, Entity, ManyToOne } from 'typeorm'
+import { BaseEntity, PrimaryGeneratedColumn, Column, Entity, ManyToOne, OneToMany } from 'typeorm'
 import { IsString, MinLength, IsUrl} from 'class-validator';
 import Batch from '../batches/entity'
-
-export type Score = 'red' | 'yellow' | 'green'
-
+import Evaluation from '../evaluations/entity'
 
 @Entity()
 export default class Student extends BaseEntity {
@@ -28,11 +26,7 @@ export default class Student extends BaseEntity {
   @Column('text')
   photo: string
 
-  @Column('json', {default: []})
-  status: [{evaluationDate: Date, score: Score}]
-
-  @Column('json', {default: []})
-  remarks: [{evaluationDate: Date, remark: string}]
-
+  @OneToMany(_ => Evaluation, evaluation => evaluation.student)
+  evaluations: Evaluation[]
 
 }

@@ -9,11 +9,11 @@ export default class Batch extends BaseEntity {
   @PrimaryColumn()
   id: number
 
-  @IsDate()
+  // @IsDate()
   @Column()
   startDate: string
 
-  @IsDate()
+  // @IsDate()
   @Column()
   endDate: string
 
