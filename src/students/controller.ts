@@ -17,7 +17,7 @@ import { io } from "../index";
 @JsonController()
 export default class StudentController {
   @Authorized()
-  @Get("/student/:id([0-9]+)")
+  @Get("/students/:id([0-9]+)")
   getStudent(@Param("id") id: number) {
     return Student.findOneById(id);
   }
@@ -53,7 +53,7 @@ export default class StudentController {
   }
 
   @Authorized()
-  @Delete("/student/:id([0-9]+)")
+  @Delete("/students/:id([0-9]+)")
   async removeStudent(@Param("id") id: number) {
     const student = await Student.findOneById(id);
     if (!student) throw new NotFoundError("Cannot find student");
