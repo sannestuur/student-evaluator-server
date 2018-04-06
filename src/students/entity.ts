@@ -19,7 +19,7 @@ export default class Student extends BaseEntity {
   @Column('text')
   lastName: string
 
-  @ManyToOne(_ => Batch, batch => batch.students)
+  @ManyToOne(_ => Batch, batch => batch.students, { nullable: true })
   batch: Batch
 
   @IsUrl()

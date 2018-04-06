@@ -31,13 +31,9 @@ export default class StudentController {
   @Authorized()
   @Post("/students")
   @HttpCode(201)
-  async createStudent(@Body() student: Student) {
-    io.emit("action", {
-      type: "UPDATE_STUDENT",
-      payload: await Student.findOneById(student.id)
-    });
-
-    return student.save();
+  async createStudent(@Body() body: Student) {
+    const student = await Student.create(body).save()
+    return student
   }
 
   @Authorized()
@@ -54,7 +50,8 @@ export default class StudentController {
 
   @Authorized()
   @Delete("/students/:id([0-9]+)")
-  async removeStudent(@Param("id") id: number) {
+  async removeStudent(
+    @Param("id") id: number) {
     const student = await Student.findOneById(id);
     if (!student) throw new NotFoundError("Cannot find student");
     student.remove();

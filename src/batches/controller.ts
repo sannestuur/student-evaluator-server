@@ -34,15 +34,11 @@ export default class BatchController {
   //   return Batch.findOneById(id);
   // }
 
-  // @Authorized()
+  @Authorized()
   @Post("/batches")
   @HttpCode(201)
-  async createBatch(@Body() batch: Batch) {
-    io.emit("action", {
-      type: "UPDATE_BATCH",
-      payload: await Batch.findOneById(batch.id)
-    });
-
-    return batch.save();
+  async createBatch(@Body() body: Batch) {
+    const batch = await Batch.create(body).save()
+    return batch
   }
 }
